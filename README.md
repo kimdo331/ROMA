@@ -70,6 +70,20 @@ agent=latent_ce_dis_rnn \
 env_args.map_name=MMM2 \
 t_max=20050000
 ```
+or
+```shell
+# run docker with STDIN and pesudo tty, remove container when exited
+sudo docker run --rm -it pymarl:1.0 /bin/bash
+
+python3 src/main.py \
+--config=qmix_smac_latent \
+--env-config=sc2 \
+with \
+agent=latent_ce_dis_rnn \
+env_args.map_name=MMM2 \
+t_max=20050000
+```
+
 
 All results will be stored in the `Results` folder.
 
