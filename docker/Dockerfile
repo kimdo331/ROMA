@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.2-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu16.04
 MAINTAINER Tabish Rashid
 
 # CUDA includes
