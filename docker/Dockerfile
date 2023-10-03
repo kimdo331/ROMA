@@ -6,14 +6,11 @@ ENV CUDA_PATH /usr/local/cuda
 ENV CUDA_INCLUDE_PATH /usr/local/cuda/include
 ENV CUDA_LIBRARY_PATH /usr/local/cuda/lib64
 
-# set timezone
-RUN apt-get update -y && \
-    apt-get install -yq tzdata && \
-    ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata
+# no interactive
+ARG DEBIAN_FRONTEND=noninteractive
 
 # Ubuntu Packages
-RUN apt-get install software-properties-common -y && \
+RUN apt-get update -y && apt-get install software-properties-common -y && \
     add-apt-repository -y multiverse && apt-get update -y && apt-get upgrade -y && \
     apt-get install -y apt-utils nano vim man build-essential wget sudo && \
     rm -rf /var/lib/apt/lists/*
