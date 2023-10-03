@@ -77,7 +77,6 @@ sudo docker run \
     --name pymarl_primi \
     --user $(id -u):$(id -g) \
     -v `pwd`:/pymarl \
-    --rm \
     -it pymarl:1.0 /bin/bash
  
 
