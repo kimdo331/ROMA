@@ -37,12 +37,12 @@ The requirements.txt file can be used to install the necessary packages into a v
 ## Run an experiment 
 
 ```shell
-python3 src/main.py 
---config=qmix_smac_latent
---env-config=sc2
-with
-agent=latent_ce_dis_rnn
-env_args.map_name=MMM2
+python3 src/main.py \
+--config=qmix_smac_latent \
+--env-config=sc2 \
+with \
+agent=latent_ce_dis_rnn \
+env_args.map_name=MMM2 \
 t_max=20050000
 ```
 
@@ -59,6 +59,17 @@ They are all located in `src/config`.
 `--config` refers to the config files in `src/config/algs`
 `--env-config` refers to the config files in `src/config/envs`
 
+To run experiments using the Docker container:
+
+```shell
+bash run.sh $GPU python3 src/main.py \
+--config=qmix_smac_latent \
+--env-config=sc2 \
+with \
+agent=latent_ce_dis_rnn \
+env_args.map_name=MMM2 \
+t_max=20050000
+```
 
 All results will be stored in the `Results` folder.
 
