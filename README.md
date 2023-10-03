@@ -73,7 +73,13 @@ t_max=20050000
 or
 ```shell
 # run docker with STDIN and pesudo tty, remove container when exited
-sudo docker run --rm -it pymarl:1.0 /bin/bash
+sudo docker run \
+    --name pymarl_primi \
+    --user $(id -u):$(id -g) \
+    -v `pwd`:/pymarl \
+    --rm \
+    -it pymarl:1.0 /bin/bash
+ 
 
 python3 src/main.py \
 --config=qmix_smac_latent \
