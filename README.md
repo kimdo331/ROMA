@@ -4,6 +4,7 @@
 
 - `.git` 폴더를 `..git` 또는 다른 것으로 변경 (아니면 sacred에서 에러 남)
 - `tensorboardX/writer`에서 `warning: Embedding dir exists, did you set global_step for add_embedding()?` warning을 주석처리함.
+- memory 작은 이슈로, src/config/algs/qmix_smac_latent.yaml의 runner를 "episode"로 (기존 "parallel"), batch_size_run을 1로(기존 8), src/config/default.yaml의 batch_size 1로 (기존 32) 설정함
 
 ```shell
 # run docker with STDIN and pesudo tty
