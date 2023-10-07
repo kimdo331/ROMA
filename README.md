@@ -12,6 +12,7 @@
 sudo docker run \
     --name pymarl_primi \
     -v `pwd`:/pymarl \
+    --gpus all \
     -it pymarl:1.0 /bin/bash
 
 python3 src/main.py \
