@@ -27,7 +27,9 @@ RUN apt-get -y install python3-pip
 RUN pip3 install --upgrade pip
 
 # Python packages we use (or used at one point...)
-RUN pip3 install numpy scipy matplotlib
+# kimdohyun
+RUN pip3 install numpy==1.20.3
+RUN pip3 install scipy matplotlib
 # kimdohyun
 RUN pip3 install pyyaml==5.4.1
 RUN pip3 install imageio
@@ -41,6 +43,8 @@ RUN pip3 install jsonpickle==0.9.6
 RUN pip3 install setuptools
 # kimdohyun
 RUN pip3 install sacred==0.7.5
+# kimdohyun
+RUN pip3 install pymongo tensorboardX
 # install Sacred (from OxWhirl fork)
 # RUN git clone https://github.com/oxwhirl/sacred.git /install/sacred && cd /install/sacred && python3 setup.py install
 
