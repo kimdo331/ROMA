@@ -1,12 +1,11 @@
 FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
-MAINTAINER Tabish Rashid
 
 # CUDA includes
 ENV CUDA_PATH /usr/local/cuda
 ENV CUDA_INCLUDE_PATH /usr/local/cuda/include
 ENV CUDA_LIBRARY_PATH /usr/local/cuda/lib64
 
-# no interactive
+# no interactive. kimdohyun
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Ubuntu Packages
@@ -28,21 +27,22 @@ RUN apt-get -y install python3-pip
 RUN pip3 install --upgrade pip
 
 # Python packages we use (or used at one point...)
-RUN pip3 install numpy scipy pyyaml matplotlib
+RUN pip3 install numpy scipy matplotlib
+# kimdohyun
+RUN pip3 install pyyaml==5.4.1
 RUN pip3 install imageio
 RUN pip3 install tensorboard-logger
 RUN pip3 install pygame
-RUN pip3 install pyyaml==5.4.1
 
 RUN mkdir /install
 WORKDIR /install
 
 RUN pip3 install jsonpickle==0.9.6
-# install Sacred (from OxWhirl fork)
 RUN pip3 install setuptools
-#RUN git clone https://github.com/oxwhirl/sacred.git /install/sacred && cd /install/sacred && python3 setup.py install
-RUN pip3 install sacred
-RUN pip3 install gfootball
+# kimdohyun
+RUN pip3 install sacred==0.7.5
+# install Sacred (from OxWhirl fork)
+# RUN git clone https://github.com/oxwhirl/sacred.git /install/sacred && cd /install/sacred && python3 setup.py install
 
 #### -------------------------------------------------------------------
 #### install pytorch
