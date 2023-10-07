@@ -2,6 +2,7 @@
 
 내가 원본 코드에서 바뀐 부분을 여기에 설명한다. (추후, 코드를 아예 바꿔버리자.)
 
+- `src/envs/gfootball/__init__.py`에서 gfootball 관련 모두 주석처리 (어차피 안씀)
 - `.git` 폴더를 `..git` 또는 다른 것으로 변경 (아니면 sacred에서 에러 남)
 - `tensorboardX/writer`에서 `warning: Embedding dir exists, did you set global_step for add_embedding()?` warning을 주석처리함.
 - memory 작은 이슈로, `src/config/algs/qmix_smac_latent.yaml`의 runner를 "episode"로 (기존 "parallel"), batch_size_run을 1로(기존 8), `src/config/default.yaml`의 batch_size 1로 (기존 32) 설정함
