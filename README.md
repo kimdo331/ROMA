@@ -1,3 +1,28 @@
+# ROMA by kimdohyun
+
+내가 원본 코드에서 바뀐 부분을 여기에 설명한다. (추후, 코드를 아예 바꿔버리자.)
+
+- `.git` 폴더를 `..git` 또는 다른 것으로 변경 (아니면 sacred에서 에러 남)
+- `tensorboardX/writer`에서 `warning: Embedding dir exists, did you set global_step for add_embedding()?` warning을 주석처리함.
+
+```shell
+# run docker with STDIN and pesudo tty
+sudo docker run \
+    --name pymarl_primi \
+    -v `pwd`:/pymarl \
+    -it pymarl:1.0 /bin/bash
+
+python3 src/main.py \
+--config=qmix_smac_latent \
+--env-config=sc2 \
+with \
+agent=latent_ce_dis_rnn \
+env_args.map_name=MMM2 \
+t_max=20050000
+```
+
+------------
+
 In ROMA's ICML paper, we use [an old version of the SMAC benchmark](https://arxiv.org/pdf/1902.04043v1.pdf) for both ROMA and the baselines (QMIX, COMA, IQL, MAVEN, QTRAN), and their performance are different from that can be achieved by the latest version.
 
 # ROMA: Multi-Agent Reinforcement Learning with Emergent Roles
@@ -63,24 +88,6 @@ To run experiments using the Docker container:
 
 ```shell
 bash run.sh $GPU python3 src/main.py \
---config=qmix_smac_latent \
---env-config=sc2 \
-with \
-agent=latent_ce_dis_rnn \
-env_args.map_name=MMM2 \
-t_max=20050000
-```
-or
-```shell
-# run docker with STDIN and pesudo tty, remove container when exited
-sudo docker run \
-    --name pymarl_primi \
-    --user $(id -u):$(id -g) \
-    -v `pwd`:/pymarl \
-    -it pymarl:1.0 /bin/bash
- 
-
-python3 src/main.py \
 --config=qmix_smac_latent \
 --env-config=sc2 \
 with \
