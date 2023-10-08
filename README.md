@@ -6,6 +6,27 @@
 - `.git` 폴더를 `..git` 또는 다른 것으로 변경 (아니면 sacred에서 에러 남)
 - `/usr/local/lib/python3.8/dist-packages/tensorboardX/writer.py`에서 `warning: Embedding dir exists, did you set global_step for add_embedding()?` warning을 주석처리함.
 - memory 작은 이슈로, `src/config/algs/qmix_smac_latent.yaml`의 runner를 "episode"로 (기존 "parallel"), batch_size_run을 1로(기존 8), `src/config/default.yaml`의 batch_size 1로 (기존 32) 설정함
+- `src/utils/logging.py` 에서 56번 Line np.mean에서 th.mean으로 변경
+<details>
+    <summary>
+    Traceback 펼치기    
+    </summary>
+```
+  File "/pymarl/src/utils/logging.py", line 55, in print_recent_stats
+    item = "{:.4f}".format(np.mean([x[1] for x in self.stats[k][-window:]]))
+  File "<__array_function__ internals>", line 5, in mean
+  File "/usr/local/lib/python3.8/dist-packages/numpy/core/fromnumeric.py", line 3419, in mean
+    return _methods._mean(a, axis=axis, dtype=dtype,
+  File "/usr/local/lib/python3.8/dist-packages/numpy/core/_methods.py", line 162, in _mean
+    arr = asanyarray(a)
+  File "/usr/local/lib/python3.8/dist-packages/numpy/core/_asarray.py", line 171, in asanyarray
+    return array(a, dtype, copy=False, order=order, subok=True)
+  File "/usr/local/lib/python3.8/dist-packages/torch/_tensor.py", line 1030, in __array__
+    return self.numpy()
+TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+```
+
+</details>
 
 ```shell
 # run docker with STDIN and pesudo tty
