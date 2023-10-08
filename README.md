@@ -8,9 +8,8 @@
 - memory 작은 이슈로, `src/config/algs/qmix_smac_latent.yaml`의 runner를 "episode"로 (기존 "parallel"), batch_size_run을 1로(기존 8), `src/config/default.yaml`의 batch_size 1로 (기존 32) 설정함
 - `src/utils/logging.py` 에서 56번 Line np.mean에서 th.mean으로 변경
 <details>
-    <summary>
-    Traceback 펼치기    
-    </summary>
+    <summary>Traceback 펼치기</summary>
+
 ```
   File "/pymarl/src/utils/logging.py", line 55, in print_recent_stats
     item = "{:.4f}".format(np.mean([x[1] for x in self.stats[k][-window:]]))
@@ -25,7 +24,6 @@
     return self.numpy()
 TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
 ```
-
 </details>
 
 ```shell
