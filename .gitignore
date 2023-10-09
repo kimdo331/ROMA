@@ -1,1 +1,4 @@
 __MACOSX/
+**/__pycache__/
+results/
+SMAC_Maps/
