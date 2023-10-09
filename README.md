@@ -30,9 +30,14 @@ TypeError: can't convert cuda:0 device type tensor to numpy. Use Tensor.cpu() to
 # run docker with STDIN and pesudo tty
 sudo docker run \
     --name pymarl_primi \
-    -v `pwd`:/pymarl \
+    -v ~/workspace/rl:/workspace \
     --gpus all \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+    -e DISPLAY=unix$DISPLAY \
     -it pymarl:1.0 /bin/bash
+    # --device=/dev/video0:/dev/video0 \
+    # --env QT_X11_NO_MITSHM=1 \
+    # -e DISPLAY=$DISPLAY \
 
 python3 src/main.py \
 --config=qmix_smac_latent \

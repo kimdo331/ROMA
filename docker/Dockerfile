@@ -37,9 +37,6 @@ RUN pip3 install imageio
 RUN pip3 install tensorboard-logger
 RUN pip3 install pygame
 
-RUN mkdir /install
-WORKDIR /install
-
 RUN pip3 install jsonpickle==0.9.6
 RUN pip3 install setuptools
 # kimdohyun
@@ -57,6 +54,9 @@ RUN pip3 install torchvision snakeviz pytest probscale
 
 ## -- SMAC
 RUN pip3 install git+https://github.com/oxwhirl/smac.git
-ENV SC2PATH /pymarl/3rdparty/StarCraftII
+ENV SC2PATH /workspace/3rdparty/StarCraftII
 
-WORKDIR /pymarl
+WORKDIR /workspace
+
+RUN pip3 install opencv-python gymnasium
+RUN apt-get install -y libgl1-mesa-glx
